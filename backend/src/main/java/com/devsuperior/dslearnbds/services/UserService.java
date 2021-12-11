@@ -22,10 +22,14 @@ public class UserService implements UserDetailsService{
 	private static Logger logger = LoggerFactory.getLogger(UserService.class);
 	
 	@Autowired
+	private AuthService authService;
+	
+	@Autowired
 	private UserRepository repository;
 	
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
+		authService.validateSelfOrAdmin(id);
 		Optional<User> user = repository.findById(id);
 		User result = user.orElseThrow(()-> new ResourceNotFoundException("Entity not found. Id: " + id));
 		return new UserDTO(result);
