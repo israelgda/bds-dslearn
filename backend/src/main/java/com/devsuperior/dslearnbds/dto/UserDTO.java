@@ -8,22 +8,22 @@ public class UserDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	private String nome;
+	private String name;
 	private String email;
 	
 	public UserDTO() {
 	}
 
-	public UserDTO(Long id, String nome, String email) {
+	public UserDTO(Long id, String name, String email) {
 		super();
 		this.id = id;
-		this.nome = nome;
+		this.name = name;
 		this.email = email;
 	}
 	
 	public UserDTO(User entity) {
 		id = entity.getId();
-		nome = entity.getName();
+		name = entity.getName();
 		email = entity.getEmail();
 	}
 
@@ -35,12 +35,12 @@ public class UserDTO implements Serializable{
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
